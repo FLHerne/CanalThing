@@ -5,14 +5,15 @@ Item {
     property bool magic: false
     property double baseHeight: 0
     property double maxDepth: 0
-    property double waterVolume: width * maxDepth //Initial setting only
-    property bool full: waterVolume >= width * maxDepth
+    property double maxVolume: width * maxDepth
+    property double waterVolume: maxVolume //Initial setting only
+    property double excessVolume: Math.max(0, waterVolume - maxVolume)
     property double waterDepth: waterVolume / width
     property double waterHeight: baseHeight + waterDepth
 
     onWaterVolumeChanged: {
         if (magic) {
-            waterVolume = width * maxDepth - 1;
+            waterVolume = maxVolume;
         }
     }
 
