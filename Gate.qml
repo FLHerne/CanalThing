@@ -12,8 +12,9 @@ Item {
             if (!open || rightPound.full) return;
             var heightDiff = leftPound.waterHeight - rightPound.waterHeight;
             var heightSign = heightDiff ? heightDiff < 0 ? -1 : 1 : 0; //AAA
-            leftPound.waterVolume -= 10 * heightSign //TODO: non-constant flowrate
-            rightPound.waterVolume += 10 * heightSign
+            var flowRate = 1.5 * Math.sqrt(Math.abs(heightDiff))
+            leftPound.waterVolume -= flowRate * heightSign //TODO: non-constant flowrate
+            rightPound.waterVolume += flowRate * heightSign
         }
     }
 
