@@ -12,7 +12,7 @@ Item {
 
     onWaterVolumeChanged: {
         if (magic) {
-            waterVolume = width * maxDepth;
+            waterVolume = width * maxDepth - 1;
         }
     }
 
