@@ -21,7 +21,7 @@ Item {
         }
     }
 
-    width: 100
+    width: 200
     anchors.bottom: parent.bottom
     Image {
         id: waterTop
@@ -84,7 +84,7 @@ Item {
         anchors.bottom: parent.bottom
     }
     Text {
-        visible: showLabels.checked
+        visible: labelsButton.checked
         text: Math.abs(waterVolume).toFixed() + "/" + maxVolume.toFixed()
         anchors.bottom: poundSideTop.top
         anchors.bottomMargin: 14

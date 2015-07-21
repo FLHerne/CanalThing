@@ -15,6 +15,7 @@ Window {
         id: scrollView
         anchors.fill: parent
         ColumnLayout {
+            width: flight.childrenRect.width
             height: Math.max(scrollView.viewport.height,
                              flight.childrenRect.height + 40)
             Item { Layout.fillHeight: true } // Spacer
@@ -24,7 +25,7 @@ Window {
                     anchors.bottom: parent.bottom
                     BoatButton { mirror: true}
                     Button {
-                        id: showLabels
+                        id: labelsButton
                         text: "Labels"
                         checkable: true
                     }
