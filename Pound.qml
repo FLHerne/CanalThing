@@ -5,6 +5,7 @@ Item {
     property bool magic: false
     property double baseHeight: 0
     property double maxDepth: 0
+    property double maxHeight: baseHeight + maxDepth
     property double maxVolume: width * maxDepth
     property double waterVolume: maxVolume //Initial setting only
     property double excessVolume: Math.max(0, waterVolume - maxVolume)

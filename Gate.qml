@@ -1,6 +1,6 @@
 import QtQuick 2.0
 
-Item {
+Rectangle {
     id: gateRoot
     property var leftPound: undefined
     property var rightPound: undefined
@@ -22,30 +22,18 @@ Item {
         }
     }
 
-    Rectangle {
-        id: ground
-        color: "brown"
-        height: 3 * parent.leftPound.baseHeight
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-    }
-    Rectangle {
-        id: gate
-        color: open ? "lightgray" : overflowing ? "red" : "black"
-        height: 3 * parent.leftPound.maxDepth + 3
-        anchors.left:parent.left
-        anchors.right: parent.right
-        anchors.bottom: ground.top
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                gateRoot.open = !(gateRoot.open);
-            }
+    MouseArea {
+        anchors.fill: parent
+        onClicked: {
+            open = !(open);
         }
     }
 
-    width: 4
-    anchors.left: leftPound.right
+    color: open ? "lightgray" : overflowing ? "red" : "black"
+    z: 1; width: 5; radius: 2.5
+    height: 3 * Math.max(leftPound.maxHeight, rightPound.maxHeight) + 3 - anchors.bottomMargin
+
+    anchors.horizontalCenter: leftPound.right
     anchors.bottom: parent.bottom
+    anchors.bottomMargin: 3 * Math.max(leftPound.baseHeight, rightPound.baseHeight)
 }

@@ -17,7 +17,7 @@ Rectangle {
         id: pound2
         baseHeight: 40
         maxDepth: 20
-        anchors.left: gate1.right
+        anchors.left: pound1.right
     }
     Gate {
         id: gate2
@@ -29,7 +29,7 @@ Rectangle {
         baseHeight: 40
         maxDepth: 10
         waterVolume: 600
-        anchors.left: gate2.right
+        anchors.left: pound2.right
     }
     Gate {
         id: gate3
@@ -38,7 +38,7 @@ Rectangle {
     }
     Pound {
         id: pound4
-        anchors.left: gate3.right
+        anchors.left: pound3.right
         baseHeight: 30
         maxDepth: 20
         waterVolume: 2600
@@ -53,6 +53,6 @@ Rectangle {
         magic: true
         baseHeight: 30
         maxDepth: 10
-        anchors.left: gate4.right
+        anchors.left: pound4.right
     }
 }
