@@ -40,6 +40,11 @@ Rectangle {
         anchors.right: poundRoot.right
         anchors.bottom: ground.top
     }
+    Text {
+        text: waterVolume.toFixed() + "/" + maxVolume.toFixed()
+        anchors.bottom: poundSide.top
+        anchors.horizontalCenter: poundSide.horizontalCenter
+    }
     color: "blue"
     height: 3 * waterHeight
 }
