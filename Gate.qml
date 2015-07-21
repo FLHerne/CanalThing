@@ -38,4 +38,8 @@ Rectangle {
     anchors.horizontalCenter: leftPound.right
     anchors.bottom: parent.bottom
     anchors.bottomMargin: 3 * Math.max(leftPound.baseHeight, rightPound.baseHeight)
+
+    Component.onCompleted: {
+        leftPound.rightGate = rightPound.leftGate = this;
+    }
 }

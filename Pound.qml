@@ -2,6 +2,9 @@ import QtQuick 2.0
 
 Rectangle {
     id: poundRoot
+    property var leftGate
+    property var rightGate
+
     property bool magic: false
     property double baseHeight: 0
     property double maxDepth: 0

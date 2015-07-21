@@ -13,7 +13,6 @@ Item {
     Pound {
         baseHeight: 40
         maxDepth: 20
-        Boat { mirror: true }
     }
     Pound {
         baseHeight: 30
@@ -35,7 +34,6 @@ Item {
     Pound {
         baseHeight: 20
         maxDepth: 20
-        Boat {}
     }
     Pound {
         baseHeight: 30
@@ -50,13 +48,16 @@ Item {
 
     Component.onCompleted: {
         var gateComponent = Qt.createComponent("Gate.qml");
-        var lenm1 = flightRoot.children.length - 1;
+        var frChildren = flightRoot.children
+        var lenm1 = frChildren.length - 1;
         for (var ic = 0; ic < lenm1; ++ic) {
             gateComponent.createObject(this, {
-                "leftPound": flightRoot.children[ic],
-                "rightPound": flightRoot.children[ic+1]
+                "leftPound": frChildren[ic],
+                "rightPound": frChildren[ic+1]
             });
-            flightRoot.children[ic+1].anchors.left = flightRoot.children[ic].right
+            frChildren[ic+1].anchors.left = frChildren[ic].right
         }
+        var boatComponent = Qt.createComponent("Boat.qml");
+        boatComponent.createObject(this, {currentPound: frChildren[1]})
     }
 }
