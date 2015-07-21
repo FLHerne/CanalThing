@@ -1,51 +1,45 @@
 import QtQuick 2.0
 
-Item {
+Rectangle {
     id: gateRoot
     property var leftPound: undefined
     property var rightPound: undefined
+    property double heightDiff: leftPound.waterHeight - rightPound.waterHeight
     property bool open: false
     property bool overflowing: false
+    property bool passable: open && !overflowing && Math.abs(heightDiff) < 0.01;
 
     Timer {
         interval: 10; running: true; repeat: true
         onTriggered: {
-            var heightDiff = leftPound.waterHeight - rightPound.waterHeight;
             var heightSign = heightDiff ? heightDiff < 0 ? -1 : 1 : 0;
-            var flowRate = 1.5 * Math.sqrt(Math.abs(heightDiff))
+            var flowRate = 1.5 * Math.sqrt(Math.abs(heightDiff));
             if (!open) flowRate = 0.;
-            var higherPound = (heightSign == 1) ? leftPound : rightPound
-            flowRate += higherPound.excessVolume
-            parent.overflowing = higherPound.excessVolume > 0.1 //Arbitrary
-            leftPound.waterVolume -= flowRate * heightSign
-            rightPound.waterVolume += flowRate * heightSign
+            var higherPound = (heightSign == 1) ? leftPound : rightPound;
+            if (higherPound.waterVolume <= 0) return;
+            flowRate += higherPound.excessVolume;
+            parent.overflowing = higherPound.excessVolume > 0.1; //Arbitrary
+            leftPound.waterVolume -= flowRate * heightSign;
+            rightPound.waterVolume += flowRate * heightSign;
         }
     }
 
-    Rectangle {
-        id: ground
-        color: "brown"
-        height: 3 * parent.leftPound.baseHeight
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-    }
-    Rectangle {
-        id: gate
-        color: open ? "lightgray" : overflowing ? "red" : "black"
-        height: 3 * parent.leftPound.maxDepth + 3
-        anchors.left:parent.left
-        anchors.right: parent.right
-        anchors.bottom: ground.top
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                gateRoot.open = !(gateRoot.open);
-            }
+    MouseArea {
+        anchors.fill: parent
+        onClicked: {
+            open = !(open);
         }
     }
 
-    width: 4
-    anchors.left: leftPound.right
+    color: passable? "lightgreen" : open ? "lightgray" : overflowing ? "red" : "black"
+    z: 1; width: 5; radius: 2.5
+    height: 3 * Math.max(leftPound.maxHeight, rightPound.maxHeight) + 3 - anchors.bottomMargin
+
+    anchors.horizontalCenter: leftPound.right
     anchors.bottom: parent.bottom
+    anchors.bottomMargin: 3 * Math.max(leftPound.baseHeight, rightPound.baseHeight)
+
+    Component.onCompleted: {
+        leftPound.rightGate = rightPound.leftGate = this;
+    }
 }
