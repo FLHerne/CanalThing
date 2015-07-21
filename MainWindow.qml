@@ -4,11 +4,13 @@ import QtQuick.Layouts 1.0
 import QtQuick.Window 2.0
 
 Window {
+    id: mainWindow
     title: "CanalThing"
     width: 800
     height: 600
     minimumWidth: 200
     minimumHeight: 200
+    maximumWidth: flight.childrenRect.width
     ScrollView {
         id: scrollView
         anchors.fill: parent
