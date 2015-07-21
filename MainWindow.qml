@@ -20,6 +20,16 @@ Window {
             Item { Layout.fillHeight: true } // Spacer
             Flight {
                 id: flight
+                Row {
+                    anchors.bottom: parent.bottom
+                    BoatButton { mirror: true}
+                    Button {
+                        id: showLabels
+                        text: "Labels"
+                        checkable: true
+                    }
+                    BoatButton {}
+                }
             }
         }
     }

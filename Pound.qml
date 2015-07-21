@@ -41,6 +41,7 @@ Rectangle {
         anchors.bottom: ground.top
     }
     Text {
+        visible: showLabels.checked
         text: Math.abs(waterVolume).toFixed() + "/" + maxVolume.toFixed()
         anchors.bottom: poundSide.top
         anchors.bottomMargin: 14
@@ -48,4 +49,5 @@ Rectangle {
     }
     color: "blue"
     height: 3 * waterHeight
+    property bool isPound: true //This is stupid
 }
