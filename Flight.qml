@@ -17,6 +17,7 @@ Rectangle {
         baseHeight: 40
         maxDepth: 20
         anchors.left: pound1.right
+        Boat { mirror: true }
     }
     Gate {
         leftPound: pound2
@@ -68,6 +69,7 @@ Rectangle {
         baseHeight: 20
         maxDepth: 20
         anchors.left: pound6.right
+        Boat {}
     }
     Gate {
         leftPound: pound7

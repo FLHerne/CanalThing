@@ -4,13 +4,14 @@ Rectangle {
     id: gateRoot
     property var leftPound: undefined
     property var rightPound: undefined
+    property double heightDiff: leftPound.waterHeight - rightPound.waterHeight
     property bool open: false
     property bool overflowing: false
+    property bool passable: open && !overflowing && Math.abs(heightDiff) < 0.01;
 
     Timer {
         interval: 10; running: true; repeat: true
         onTriggered: {
-            var heightDiff = leftPound.waterHeight - rightPound.waterHeight;
             var heightSign = heightDiff ? heightDiff < 0 ? -1 : 1 : 0;
             var flowRate = 1.5 * Math.sqrt(Math.abs(heightDiff))
             if (!open) flowRate = 0.;
@@ -29,7 +30,7 @@ Rectangle {
         }
     }
 
-    color: open ? "lightgray" : overflowing ? "red" : "black"
+    color: passable? "lightgreen" : open ? "lightgray" : overflowing ? "red" : "black"
     z: 1; width: 5; radius: 2.5
     height: 3 * Math.max(leftPound.maxHeight, rightPound.maxHeight) + 3 - anchors.bottomMargin
 
