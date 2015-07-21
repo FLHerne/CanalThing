@@ -18,7 +18,7 @@ Item {
         }
     }
 
-    width: 200
+    width: 100
     anchors.bottom: parent.bottom
     Rectangle {
         id: ground
