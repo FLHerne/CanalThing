@@ -7,7 +7,8 @@ Rectangle {
     property double heightDiff: leftPound.waterHeight - rightPound.waterHeight
     property bool open: false
     property bool overflowing: false
-    property bool passable: open && !overflowing && Math.abs(heightDiff) < 0.01;
+    property bool passable: (open && !overflowing && Math.abs(heightDiff) < 0.01 &&
+                              leftPound.waterDepth > 3 && rightPound.waterDepth > 3)
 
     Timer {
         interval: 10; running: true; repeat: true
