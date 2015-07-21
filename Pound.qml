@@ -8,7 +8,10 @@ Rectangle {
     property double maxHeight: baseHeight + maxDepth
     property double maxVolume: width * maxDepth
     property double waterVolume: maxVolume //Initial setting only
-    property double excessVolume: Math.max(0, waterVolume - maxVolume)
+    property double excessVolume: {
+        waterVolume < 0 ? waterVolume :
+        Math.max(0, waterVolume - maxVolume)
+    }
     property double waterDepth: waterVolume / width
     property double waterHeight: baseHeight + waterDepth
 
