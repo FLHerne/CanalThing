@@ -41,8 +41,9 @@ Rectangle {
         anchors.bottom: ground.top
     }
     Text {
-        text: waterVolume.toFixed() + "/" + maxVolume.toFixed()
+        text: Math.abs(waterVolume).toFixed() + "/" + maxVolume.toFixed()
         anchors.bottom: poundSide.top
+        anchors.bottomMargin: 14
         anchors.horizontalCenter: poundSide.horizontalCenter
     }
     color: "blue"

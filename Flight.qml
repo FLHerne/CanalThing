@@ -1,6 +1,7 @@
 import QtQuick 2.0
 
 Rectangle {
+    width: childrenRect.width
     Pound {
         id: pound1
         magic: true
