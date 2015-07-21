@@ -1,6 +1,6 @@
 import QtQuick 2.0
 
-Rectangle {
+Item {
     id: poundRoot
     property var leftGate
     property var rightGate
@@ -23,31 +23,73 @@ Rectangle {
 
     width: 100
     anchors.bottom: parent.bottom
-    Rectangle {
-        id: ground
-        color: "brown"
-        height: 3 * baseHeight
-        anchors.left: poundRoot.left
-        anchors.right: poundRoot.right
-        anchors.bottom: poundRoot.bottom
+    Image {
+        id: waterTop
+        source: "watertop.png"
+        fillMode: Image.TileHorizontally
+        verticalAlignment: Image.AlignTop
+        horizontalAlignment: Image.AlignLeft
+        anchors.top: parent.top
+        anchors.topMargin: -2 //For wibbly surface
+        anchors.left: parent.left
+        anchors.right: parent.right
     }
     Rectangle {
-        id: poundSide
-        color: "gray"
-        height: 3 * maxDepth
+        id: water
+        color: "#E1000000"
+        anchors.top: waterTop.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+    }
+    Rectangle {
+        id: ground
+        color: "black"
+        height: 3 * baseHeight
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+    }
+    Image {
+        id: groundTop
+        source: "mudtop.png"
+        fillMode: Image.TileHorizontally
+        anchors.top: ground.top
+        anchors.topMargin: -3 //For wibbly surface
+        anchors.left: parent.left
+        anchors.right: parent.right
+    }
+    Image {
+        id: poundSideTop
+        source: "bricktop.png"
+        fillMode: Image.TileHorizontally
+        verticalAlignment: Image.AlignTop
+        horizontalAlignment: Image.AlignLeft
         z: -1
-        anchors.left: poundRoot.left
-        anchors.right: poundRoot.right
-        anchors.bottom: ground.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: ground.top
+        anchors.topMargin: -(3 * maxDepth + 10) //Water not right to top
+    }
+    Image {
+        id: poundSide
+        source: "brick.png"
+        fillMode: Image.Tile
+        verticalAlignment: Image.AlignTop
+        horizontalAlignment: Image.AlignLeft
+        z: -1
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: poundSideTop.bottom
+        anchors.bottom: parent.bottom
     }
     Text {
         visible: showLabels.checked
         text: Math.abs(waterVolume).toFixed() + "/" + maxVolume.toFixed()
-        anchors.bottom: poundSide.top
+        anchors.bottom: poundSideTop.top
         anchors.bottomMargin: 14
-        anchors.horizontalCenter: poundSide.horizontalCenter
+        anchors.horizontalCenter: parent.horizontalCenter
     }
-    color: "blue"
     height: 3 * waterHeight
     property bool isPound: true //This is stupid
 }
