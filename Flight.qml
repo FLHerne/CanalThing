@@ -13,11 +13,11 @@ Item {
         maxDepth: 16
     }
     Pound {
-        baseHeight: 18
+        baseHeight: 24
         maxDepth: 16
     }
     Pound {
-        baseHeight: 18
+        baseHeight: 24
         maxDepth: 8
     }
     Pound {
@@ -34,7 +34,7 @@ Item {
         maxDepth: 16
     }
     Pound {
-        baseHeight: 18
+        baseHeight: 24
         maxDepth: 16
     }
     Pound {
