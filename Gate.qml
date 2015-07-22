@@ -14,7 +14,7 @@ Rectangle {
         interval: 10; running: true; repeat: true
         onTriggered: {
             var heightSign = heightDiff ? heightDiff < 0 ? -1 : 1 : 0;
-            var flowRate = 1.5 * Math.sqrt(Math.abs(heightDiff));
+            var flowRate = 2 * Math.sqrt(Math.abs(heightDiff));
             if (!open) flowRate = 0.;
             var higherPound = (heightSign == 1) ? leftPound : rightPound;
             if (higherPound.waterVolume <= 0) return;

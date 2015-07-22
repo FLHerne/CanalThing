@@ -32,7 +32,7 @@ Image {
 
     Behavior on x {
         NumberAnimation {
-            duration: 2000;
+            duration: 4500;
         }
     }
 }

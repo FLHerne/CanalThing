@@ -4,42 +4,42 @@ Item {
     //vvv Pound definitions vvv
     Pound {
         magic: true
-        baseHeight: 50
-        maxDepth: 10
-        width: 200
-    }
-    Pound {
         baseHeight: 40
-        maxDepth: 20
+        maxDepth: 8
+        width: 300
     }
     Pound {
-        baseHeight: 30
-        maxDepth: 20
+        baseHeight: 32
+        maxDepth: 16
     }
     Pound {
-        baseHeight: 30
-        maxDepth: 10
+        baseHeight: 18
+        maxDepth: 16
     }
     Pound {
-        baseHeight: 20
-        maxDepth: 20
+        baseHeight: 18
+        maxDepth: 8
+    }
+    Pound {
+        baseHeight: 16
+        maxDepth: 16
     }
     Pound {
         magic: true
-        baseHeight: 20
-        maxDepth: 10
+        baseHeight: 16
+        maxDepth: 8
     }
     Pound {
-        baseHeight: 20
-        maxDepth: 20
+        baseHeight: 16
+        maxDepth: 16
     }
     Pound {
-        baseHeight: 30
-        maxDepth: 20
+        baseHeight: 18
+        maxDepth: 16
     }
     Pound {
-        baseHeight: 40
-        maxDepth: 10
+        baseHeight: 32
+        maxDepth: 8
         magic: true
         width: 200
     }
